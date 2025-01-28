@@ -1,45 +1,23 @@
-const title = "Bonjour les gens";
-const style = { color: "red", backgroundColor: "blue" };
+import { useState } from "react";
 
-const todos = [
-  "Preparer",
-  'Manger',
-  "Boire" ,
-  "s'amuser"
-]
 
 function App() {
-  const handleClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert(" j'ai cliqué sur le titre");
-  };
+  
+  const [person , setPerson] = useState({
+    name : "Berenis",
+    age : 0
+  })
+
+  const handleClick = () => {
+    setPerson({...person , age: person.age +1})
+  }
 
   return (
     <>
-      <Title color="yellow" content="Berenis MASSAMBA"/>
-      <Title>hello guys !</Title>
-      <input type="text" />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad
-        perferendis sequi voluptas cum recusandae dolore alias ratione a
-        deleniti minima doloribus eligendi, repudiandae odit. Nostrum temporibus
-        voluptate rem natus?
-      </p>
-      <ul>
-        {todos.map(todo => <li key={todo}>{todo}</li>)}
-      </ul>
+      <p>Age : {person.age}</p>
+      <button onClick={handleClick}>Augmenter l'âge</button>
     </>
   );
 }
 
-
-const Title = ({color , content, children}) => {
-  return (
-    <>
-      <h1 style={{color : color}}>{content}</h1>
-      <h1 style={{color : color}}>{children}</h1>
-    </>
-  )
-}
 export default App;
